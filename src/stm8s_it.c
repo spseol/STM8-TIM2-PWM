@@ -267,24 +267,24 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
   * @param  None
   * @retval None
   */
-// INTERRUPT_HANDLER(TIM2_UPD_OVF_BRK_IRQHandler, 13)
-//{
+INTERRUPT_HANDLER(TIM2_UPD_OVF_BRK_IRQHandler, 13)
+{
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
-//}
+}
 
 /**
   * @brief  Timer2 Capture/Compare Interrupt routine
   * @param  None
   * @retval None
   */
-// INTERRUPT_HANDLER(TIM2_CAP_COM_IRQHandler, 14)
-//{
+INTERRUPT_HANDLER(TIM2_CAP_COM_IRQHandler, 14)
+{
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
-//}
+}
 #endif /*STM8S903*/
 
 #if defined(STM8S208) || defined(STM8S207) || defined(STM8S007) || defined(STM8S105) || \
@@ -294,7 +294,7 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
   * @param  None
   * @retval None
   */
- INTERRUPT_HANDLER(TIM3_UPD_OVF_BRK_IRQHandler, 15)
+INTERRUPT_HANDLER(TIM3_UPD_OVF_BRK_IRQHandler, 15)
 {
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
@@ -333,16 +333,14 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
   * @param  None
   * @retval None
   */
-//INTERRUPT_HANDLER(UART1_RX_IRQHandler, 18)
-//{
-  /* In order to detect unexpected events during development,
-     it is recommended to set a breakpoint on the following instruction.
-  */
-  /*  char c = UART1_ReceiveData8();
+INTERRUPT_HANDLER(UART1_RX_IRQHandler, 18)
+{
+    char c;
+
+    c = UART1_ReceiveData8();
+    while (UART1_GetFlagStatus(UART1_FLAG_TXE) == RESET); // už je volno?
     UART1_SendData8(c);
-    GPIO_WriteReverse(GPIOC, GPIO_PIN_5);
-    */
-//}
+}
 
 #endif /*STM8S105 || STM8S001 */
 
